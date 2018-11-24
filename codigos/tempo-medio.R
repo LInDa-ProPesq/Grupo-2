@@ -34,7 +34,11 @@ for(i in 1:length(tabelaTempoGasto)) {
 }
 media <- tempoMedio / 68 / 60
 
+toString(media)
+horas <- floor(media)
+minutos <- (media - horas) * 60
+
 segments(x0=media, x1=media, y0=0, y1= 19, col="red")
 text("Tempo médio", x=media, y=21, col="red")
-text(paste(round(100 * media) / 100, " horas diárias"), x=media, y=20, col="red")
+text(paste(horas, "h", round(minutos), "horas diárias"), x=media, y=20, col="red")
 
