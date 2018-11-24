@@ -26,6 +26,8 @@ pinterest <- table(df$pinterest)
 social <- c(twitter, facebook, whatsapp, linkedin, youtube, instagram, snapchat, tumblr, pinterest)
 lbls <- c("Twitter", "Facebook", "Whatsapp", "Linkedin", "Youtube", "Instagram", "Snapchat", "Tumblr", "Pinterest")
 
+jpeg("graficos/quantidade-usuarios-rede-social.jpeg")
+
 xval <- barplot(social,
         main="Quantidade de usuários de cada rede social\ndentre os respondentes",
         axisnames=FALSE,
@@ -37,4 +39,4 @@ abline(a=total, b=0, lwd=2, lty = 2, col="red")
 text(y=total, x=-.5, "Total", xpd=TRUE, col="red", adj=1)
 text(x=xval, y=social + 0.05 * max(social), social, font=2)
 text(lbls, x=xval, y=-0.05 * max(social), xpd=TRUE, srt="45", adj=1)
-
+dev.off()

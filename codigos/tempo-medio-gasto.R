@@ -14,6 +14,8 @@ h1 = aux[1] + aux[2] + aux[3]
 
 tabelaTempoGasto <- c(h1, aux[-(1:3)])
 
+jpeg("graficos/tempo-medio-gasto.jpeg");
+
 xval <- barplot(tabelaTempoGasto,
                 main="Quanto tempo é gasto diariamente em redes sociais",
                 axisnames=FALSE,
@@ -24,7 +26,7 @@ xval <- barplot(tabelaTempoGasto,
 
 text(x=xval, y=tabelaTempoGasto + 0.05*max(tabelaTempoGasto), tabelaTempoGasto, font=2)
 
-text(lbls, x=xval, y=-0.05 * max(tabelaTempoGasto), xpd=TRUE, srt="45", adj=1)
+text(lbls, x=xval, y=-0.05 * max(tabelaTempoGasto), xpd=TRUE)
 
 tempos <- c(30, 90, 150, 210, 270, 300)
 
@@ -34,11 +36,11 @@ for(i in 1:length(tabelaTempoGasto)) {
 }
 media <- tempoMedio / 68 / 60
 
-toString(media)
 horas <- floor(media)
 minutos <- (media - horas) * 60
 
-segments(x0=media, x1=media, y0=0, y1= 19, col="red")
-text("Tempo médio", x=media, y=21, col="red")
-text(paste(horas, "h", round(minutos), "horas diárias"), x=media, y=20, col="red")
+segments(x0=media, x1=media, y0=0, y1= 20, col="red")
+text(paste("Tempo médio", "(", horas, "h", round(minutos), ")"), x=media, y=21, col="red")
+
+dev.off()
 
