@@ -1,15 +1,25 @@
 library(readxl)
-library(xlsx)
+
 df <- read_excel("dados/umses_alunos_2018.xlsx")
 #View(df)
 
-jpeg("graficos/distribuicao-idade.jpeg")
+png("graficos/distribuicao-idade.png", width=600, height=600)
 
-idadeLbl = c("16-20", "21-25", "26-30", "31-35", "40+")
-idadePercent = sprintf("%d%%", round(100 * table(df$idade) / sum(table(df$idade))))
+idade <- table(df$idade)
 
-pie(table(df$idade), labels=idadePercent, col=rainbow(5, s=.3), main="Faixa etária dos entrevistados")
-legend("topright", idadeLbl, fill=rainbow(5, s=.3))
+nidade <- as.table(0)
+names(nidade) <- 5
+
+idades <- c(idade, nidade)
+
+idadeOrdenada <- idades[order(names(idades))]
+
+idadeLbl = c("16-20", "21-25", "26-30", "31-35", "36-40", "40+")
+
+idadePercent = sprintf("%d%%", round(100 * idadeOrdenada / sum(idadeOrdenada)))
+
+pie(idadeOrdenada, labels=idadePercent, col=rainbow(6, s=.3), main="Faixa etária dos entrevistados")
+legend("topright", idadeLbl, fill=rainbow(6, s=.3))
 
 dev.off()
 

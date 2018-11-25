@@ -1,5 +1,5 @@
 library(readxl)
-library(xlsx)
+
 df <- read_excel("dados/umses_alunos_2018.xlsx")
 #View(df)
 
@@ -14,7 +14,7 @@ h1 = aux[1] + aux[2] + aux[3]
 
 tabelaTempoGasto <- c(h1, aux[-(1:3)])
 
-jpeg("graficos/tempo-medio-gasto.jpeg");
+png("graficos/tempo-medio.png", width=600, height=600)
 
 xval <- barplot(tabelaTempoGasto,
                 main="Quanto tempo é gasto diariamente em redes sociais",

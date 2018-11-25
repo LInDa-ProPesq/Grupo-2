@@ -1,5 +1,5 @@
 library(readxl)
-library(xlsx)
+
 df <- read_excel("dados/umses_alunos_2018.xlsx")
 #View(df)
 
@@ -23,10 +23,12 @@ tumblr <- table(df$tumblr)
 
 pinterest <- table(df$pinterest)
 
-social <- c(twitter, facebook, whatsapp, linkedin, youtube, instagram, snapchat, tumblr, pinterest)
+temp <- c(twitter, facebook, whatsapp, linkedin, youtube, instagram, snapchat, tumblr, pinterest)
 lbls <- c("Twitter", "Facebook", "Whatsapp", "Linkedin", "Youtube", "Instagram", "Snapchat", "Tumblr", "Pinterest")
 
-jpeg("graficos/quantidade-usuarios-rede-social.jpeg")
+png("graficos/quantidade-usuarios-rede-social.png", width=600, height=600)
+
+social <- temp[names(temp) == "1"]
 
 xval <- barplot(social,
         main="Quantidade de usuários de cada rede social\ndentre os respondentes",

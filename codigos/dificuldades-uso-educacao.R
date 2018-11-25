@@ -1,4 +1,5 @@
 library(readxl)
+
 df <- read_excel("dados/umses_alunos_2018.xlsx")
 #View(df)
 
@@ -6,15 +7,15 @@ total <- length(df$distracao)
 
 outros <- sum(table(df$outras_dificuldades))
 
-distracao <- table(df$distracao)
+distracao <- table(df$distracao)[names(table(df$distracao)) == "1"]
 
-usoindev <- table(df$usoindev)
+usoindev <- table(df$usoindev)[names(table(df$usoindev)) == "1"]
 
-prejintera <- table(df$prejintera)
+prejintera <- table(df$prejintera)[names(table(df$prejintera)) == "1"]
 
-bulling <- table(df$bulling)
+bulling <- table(df$bulling)[names(table(df$bulling)) == "1"]
 
-continadeq <- table(df$continadeq)
+continadeq <- table(df$continadeq)[names(table(df$continadeq)) == "1"]
 
 
 labels <- c("Distração", "Uso indevido", "Prejudica a interação aluno-professor", "Cyber-bullying", "Publicação de conteúdo inadequado")
@@ -23,11 +24,10 @@ values <- c(distracao, usoindev, prejintera, bulling, continadeq)
 dados <- data.frame(labels, values)
 nl <- data.frame("Outros", outros)
 names(nl) <- c("labels", "values")
-dadosOrdenados <- dados[with(dados, order(dados$values)),]
 
-dadosOrdenados <- rbind(dadosOrdenados, nl)
+dadosOrdenados <- rbind(dados[with(dados, order(dados$values)),], nl)
 
-jpeg("graficos/dificuldades-uso-educacao.jpeg")
+png("graficos/dificuldades-uso-educacao.png", width=600, height=600)
 
 xval <- barplot(dadosOrdenados$values,
         main="Dificuldades no uso de mídias sociais\nnum ambiente educacional",
