@@ -1,6 +1,6 @@
 library(readxl)
 # Carrega os dados da planilha em um dataframe
-df <- read_excel("dados/umses_graduacao_2018_vtidy.xlsx")
+df <- read_excel("dados/umses_alunos_2018.xlsx")
 
 # Lê os dados pertinentes à questão "Os alunos terão melhores resultados
 # se as mídias sociais estiverem integradas nas aulas"

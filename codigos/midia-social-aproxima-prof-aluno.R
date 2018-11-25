@@ -1,6 +1,6 @@
 library(readxl)
 # Carrega os dados da planilha em um dataframe
-df <- read_excel("dados/umses_graduacao_2018_vtidy.xlsx")
+df <- read_excel("dados/umses_alunos_2018.xlsx")
 
 # Lê apenas os dados pertinentes à questão "A mídia social é a melhor 
 # forma dos professores se aproximarem de seus alunos"
@@ -14,7 +14,7 @@ ylab = barplot(profchegaal,
                names.arg = c('Não', 'Sim', 'Sem opinião'),
                col = rainbow(3, s=.3),
                ylab = "Quantidade de escolhas", 
-               ylim = c(0, 27), 
+               ylim = c(0, max(profchegaal) + 3), 
                main = "A mídia social é a melhor\nforma dos professores se\naproximarem de seus alunos")
 
 # Escreve os valores acima de suas respectivas barras
