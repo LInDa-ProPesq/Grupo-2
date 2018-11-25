@@ -2,7 +2,10 @@
 title: "Dificuldade de uso na Educação"
 author: "Grupo 2"
 date: "25 de novembro de 2018"
-output: pdf_document
+output: 
+  pdf_document:
+    fig_width: 8
+    fig_height: 8
 ---
 
   Para instalarem o que o Markdown precisa para funcionar cliquem no arquivo com um + no canto esquerdo da tela e selecione para criar um R markdown, ele vai perguntar se você quer baixar o que e necessario, entao é só aceitar.
