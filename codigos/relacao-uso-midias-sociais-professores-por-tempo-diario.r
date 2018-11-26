@@ -9,7 +9,7 @@ names(nrow1) <- c(1, 2, 3, 4)
 rownames(nrow1)
 
 # Cria um dataframe com apenas os dados necessários
-graf4 <- rbind(nrows, table(data.frame(df$tempogasto, df$usoacademico)))
+graf4 <- rbind(nrow1, table(data.frame(df$tempogasto, df$usoacademico)))
 rownames(graf4) <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
 
 
