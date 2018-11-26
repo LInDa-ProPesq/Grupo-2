@@ -5,98 +5,83 @@ fontsize: 12pt
 \newpage
 \pagestyle{empty}
 \begin{center}
-{\large Universidade Paulista 'Julio de Mesquita Filho'}\\[8cm]
-{\large Analise Exploratória de Dados: "O Uso da Mídia Social no Ensino Superior"'}\\[5cm]
+{\large Universidade Paulista 'JÃºlio de Mesquita Filho'}\\[8cm]
+{\large Analise ExploratÃ³ria de Dados: "O Uso da MÃ­dia Social no Ensino Superior"'}\\[5cm]
 \end{center}
 
-\begin{flushleft}
+\begin{center}
 {\large Bruno Belluzzo}\\
 {\large Marcelo Garcia Nunes}\\
 {\large Marcelo Hideaki Iwata Kito}\\
 {\large Paulo Eduardo Manzone Maia}\\
 {\large Rafael Tatsuki Takagi}\\[5cm]
-\end{flushleft}
+\end{center}
 
 \begin{center}
 {\large Bauru}\\[0.5cm]
-{\large 2017}\\
+{\large 2018}\\
 \end{center}
   
 
 \newpage
-#Introdução
-O uso das mídias sociais na área educativa sempre foi controversa. Por um lado são apontadas as possibilidades de ganhos de produtividade utilizando estas ferramentas, enquanto por outro lado são indicados problemas relacionados à utilização dessas ferramentas em ambientes educativos.  
-Para entender alguns aspectos desses dois lados, foi feito um pequeno censo dentro de um grupo de estudantes da Unesp de Bauru, buscando centralizar diversas informações e opiniões relacionadas ao uso de mídias sociais no ensino superior, a fim de extrair alguma informação relevante sobre estes dados, o que levou à análise exploratória dos mesmos.
+#IntroduÃ§Ã£o
+O uso das mÃ­dias sociais na Ã¡rea educativa sempre foi controversa. Por um lado sÃ£o apontadas as possibilidades de ganhos de produtividade utilizando estas ferramentas, enquanto por outro lado sÃ£o indicados problemas relacionados Ã  utilizaÃ§Ã£o dessas ferramentas em ambientes educativos.  
 
-#Análise Exploratória dos dados
-Tentando buscar relações entre idade ou tempo gasto diariamente das mídias
-dos participantes com sua opinião sobre a utilização das mídias sociais
-no meio educacional, abordamos os dados de forma a nos retornar informações
-relevantes sobre estas variáveis.  
-Primeiro, buscamos analisar isoladamente as perguntas, buscando entender o perfil
-dos particpantes  
-//Gráfico das respostas simnãocrestriçoes
+Para entender alguns aspectos desses dois lados, foi feito um pequeno censo dentro de um grupo de estudantes da Unesp de Bauru, buscando centralizar diversas informaÃ§Ãµes e opiniÃµes relacionadas ao uso de mÃ­dias sociais no ensino superior, a fim de extrair alguma informaÃ§Ã£o relevante sobre estes dados, o que levou Ã  anÃ¡lise exploratÃ³ria dos mesmos.
+
+#AnÃ¡lise ExploratÃ³ria dos dados
+Tentando buscar relaÃ§Ãµes entre idade ou tempo gasto diariamente das mÃ­dias dos participantes com sua opiniÃ£o sobre a utilizaÃ§Ã£o das mÃ­dias sociais no meio educacional, abordamos os dados de forma a nos retornar informaÃ§Ãµes relevantes sobre estas variÃ¡veis.  
+
+Primeiro, buscamos analisar isoladamente as perguntas, buscando entender o perfil dos participantes.
+<!--GrÃ¡fico das respostas simnÃ£ocrestriÃ§oes-->
 ```{r echo=F, fig.align="center"}
-```
-Vemos que de forma geral, os participantes são a favor do uso, mesmo com restrições,
-mas que existem alguns participantes contra, o que se torna alvo de estudo. Busca-seentender a seguir como o perfil do participante influencia de forma negativa a visão dos participantes sobre o uso de redes sociais no meio educativo.  
-```{r echo=F,fig.align="center"}
+# ../codigos/uso-midia-social-professores.r
 library(readxl)
-
 df <- read_excel("../dados/umses_alunos_2018.xlsx")
-#View(df)
 
-
+lbls <- c("NÃ£o", "Sim", "Sim, porÃ©m\ncom restriÃ§Ãµes", "NÃ£o sei/nÃ£o\ntenho opiniÃ£o")
+xval <- barplot(table(df$usoacademico),
+        main="A mÃ­dia social Ã© uma ferramenta que pode\nser usada por professores?",
+        ylim=c(0, 50),
+        names.arg=lbls,
+        col=rainbow(4, s=.3))
+text(x=xval, y=table(df$usoacademico) + max(table(df$usoacademico)) * 0.05, table(df$usoacademico))
+```
+Vemos que de forma geral, os participantes sÃ£o a favor do uso, mesmo com restriÃ§Ãµes, mas que existem alguns participantes contra, o que se torna alvo de estudo. Busca-se entender a seguir como o perfil do participante influencia de forma negativa a visÃ£o dos participantes sobre o uso de redes sociais no meio educativo.  
+```{r echo=F,fig.align="center"}
+# ../codigos/distribuicao-idade.r
+library(readxl)
+df <- read_excel("../dados/umses_alunos_2018.xlsx")
 idade <- table(df$idade)
-
 nidade <- as.table(0)
 names(nidade) <- 5
-
 idades <- c(idade, nidade)
-
 idadeOrdenada <- idades[order(names(idades))]
-
 idadeLbl = c("16-20", "21-25", "26-30", "31-35", "36-40", "40+")
-
 idadePercent = sprintf("%d%%", round(100 * idadeOrdenada / sum(idadeOrdenada)))
-
-pie(idadeOrdenada, labels=idadePercent, col=rainbow(6, s=.3), main="Faixa etária dos entrevistados")
+pie(idadeOrdenada, labels=idadePercent, col=rainbow(6, s=.3), main="Faixa etÃ¡ria dos entrevistados")
 legend("topright", idadeLbl, fill=rainbow(6, s=.3))
-
 ```
-Como vemos, a maioria dos entrevistados é um público jovem, com idade entre
-16 e 25 anos, mas existem também participantes de outras faixa etárias,
-o que servirá para análise comparativa.
-Buscamos entender qual é a experiência dos participantes com redes
-sociais, buscando analisar como o contato com as redes influencia na forma
-que elas opinam sobre a utilização destas redes de forma educativa.  
-//Gráfico midias x a-favor-ou-não
+Como vemos, a maioria dos entrevistados Ã© um pÃºblico jovem, com idade entre 16 e 25 anos, mas existem tambÃ©m participantes de outras faixa etÃ¡rias, o que servirÃ¡ para anÃ¡lise comparativa.
+
+Buscamos entender qual Ã© a experiÃªncia dos participantes com redes sociais, buscando analisar como o contato com as redes influencia na forma que elas opinam sobre a utilizaÃ§Ã£o destas redes de forma educativa.  
+<!--GrÃ¡fico midias x a-favor-ou-nÃ£o-->
 ```{r echo=F, fig.align="center"}
+# ../codigos/relacao-uso-midias-sociais-por-uso-redes-sociais.R
 library(readxl)
-
 df <- read_excel("../dados/umses_alunos_2018.xlsx")
-#View(df)
-
 tabela <- cbind(df$twitter, df$facebook, df$whatsapp, df$linkedin, df$youtube, df$instagram, df$snapchat, df$tumblr, df$pinterest, df$usoacademico)
-
-# colnames(tabela) <- c(lbls, "Uso academico")
-
 lbls <- c("Twitter", "Facebook", "Whatsapp", "Linkedin", "Youtube", "Instagram", "Snapchat", "Tumblr", "Pinterest")
-
 tab1 <- tabela[tabela[, 10] == 1, 1:9]
 graf1 <- colSums(tab1[1:length(tab1[, 1]), 1:9])
-
 tab2 <- tabela[tabela[, 10] == 2, 1:9]
 graf2 <- colSums(tab2[1:length(tab2[, 1]), 1:9])
-
 tab3 <- tabela[tabela[, 10] == 3, 1:9]
 graf3 <- colSums(tab3[1:length(tab3[, 1]), 1:9])
-
 tab4 <- tabela[tabela[, 10] == 4, 1:9]
 graf4 <- colSums(tab4[1:length(tab4[, 1]), 1:9])
-
 xval1 <- barplot(graf1,
-                 main="Uso das redes sociais entre quem respondeu \"Não\"\npara o uso de mídias sociais por professores",
+                 main="Uso das redes sociais entre quem respondeu \"NÃ£o\"\npara o uso de mÃ­dias sociais por professores",
                  ylab="Quantidade de escolhas",
                  beside=TRUE,
                  axes=FALSE,
@@ -104,250 +89,221 @@ xval1 <- barplot(graf1,
                  col=rainbow(9, s=.3),
                  ylim=c(0, 3))
 axis(0:3, side=2, pos=c(0, 0))
-
 text(lbls, x=xval1, y=-0.05 * max(graf1), srt="45", xpd=TRUE, adj=1)
 text(graf1, x=xval1, y=graf1 + 0.05 * max(graf1))
 
+xval2 <- barplot(graf2,
+                 main="Uso das redes sociais entre quem respondeu \"Sim\"\npara o uso de mÃ­dias sociais por professores",
+                 ylab="Quantidade de escolhas",
+                 beside=TRUE,
+                 axes=FALSE,
+                 axisnames=FALSE,
+                 col=rainbow(9, s=.3),
+                 ylim=c(0, 45))
+axis(seq(0, 45, 5), side=2, pos=c(0, 0))
 
+text(lbls, x=xval2, y=-0.05 * max(graf2), srt="45", xpd=TRUE, adj=1)
+text(graf2, x=xval2, y=graf2 + 0.05 * max(graf2))
 
+xval3 <- barplot(graf3,
+                 main="Uso das redes sociais entre quem respondeu \"Sim, porÃ©m\ncom restriÃ§Ãµes\" para o uso de mÃ­dias sociais por professores",
+                 ylab="Quantidade de escolhas",
+                 beside=TRUE,
+                 axes=FALSE,
+                 axisnames=FALSE,
+                 col=rainbow(9, s=.3),
+                 ylim=c(0, 25))
+axis(seq(0, 25, 5), side=2, pos=c(0, 0))
+
+text(lbls, x=xval3, y=-0.05 * max(graf3), srt="45", xpd=TRUE, adj=1)
+text(graf3, x=xval3, y=graf3 + 0.05 * max(graf3))
+
+xval4 <- barplot(graf4,
+                 main="Uso das redes sociais entre quem respondeu \"NÃ£o sei/NÃ£o\ntenho opiniÃ£o\"\ para o uso de mÃ­dias sociais por professores",
+                 ylab="Quantidade de escolhas",
+                 beside=TRUE,
+                 axes=FALSE,
+                 axisnames=FALSE,
+                 col=rainbow(9, s=.3),
+                 ylim=c(0, max(graf4) + 1))
+axis(0:(max(graf4) + 1), side=2, pos=c(0, 0))
+
+text(lbls, x=xval4, y=-0.05 * max(graf4), srt="45", xpd=TRUE, adj=1)
+text(graf4, x=xval4, y=graf4 + 0.05 * max(graf4))
 ```
 
-Analisando o perfil daqueles que responderam "não", vemos que se eles se enquadram no perfil de uso de diferentes espectros das redes sociais. Porém devido à pequena amostra não podemos ser conclusivos, mas apenas apontar que são usuários de diversas dessas redes.
-Foi análisado também o perfil de uso dos participantes, buscando entender 
-também como isso influência a opinião da pessoa sobre o assunto.  
-//gráfico do perfil de uso
+Analisando o perfil daqueles que responderam "nÃ£o", vemos que se eles se enquadram no perfil de uso de diferentes espectros das redes sociais. PorÃ©m devido Ã  pequena amostra nÃ£o podemos ser conclusivos, mas apenas apontar que sÃ£o usuÃ¡rios de diversas dessas redes.
+
+PRECISA COMPLETAR MAIS AQUI
+
+Foi anÃ¡lisado tambÃ©m o perfil de uso dos participantes, buscando entender tambÃ©m como isso influÃªncia a opiniÃ£o da pessoa sobre o assunto.  
+<!--grÃ¡fico do perfil de uso-->
 ```{r echo=F, fig.align="center"}
+# ../codigos/tempo-medio-gasto.r
 library(readxl)
-
 df <- read_excel("../dados/umses_alunos_2018.xlsx")
-#View(df)
-
 lbls <- c("0h-1h", "1h-2h", "2h-3h", "3h-4h", "4h-5h", "5h+")
-
-m <- table(df$tempogasto)
-
 aux <- as.vector(table(df$tempogasto))
-
 h1 = aux[1] + aux[2] + aux[3] 
-
 tabelaTempoGasto <- c(h1, aux[-(1:3)])
-
-
 xval <- barplot(tabelaTempoGasto,
-                main="Quanto tempo é gasto diariamente em redes sociais",
+                main="Quanto tempo Ã© gasto diariamente em redes sociais",
                 axisnames=FALSE,
                 ylab="Quantidade de pessoas",
                 ylim=c(0, 23),
                 col=rainbow(8, s=.3),
                 space=0)
-
 text(x=xval, y=tabelaTempoGasto + 0.05*max(tabelaTempoGasto), tabelaTempoGasto, font=2)
-
 text(lbls, x=xval, y=-0.05 * max(tabelaTempoGasto), xpd=TRUE)
-
 tempos <- c(30, 90, 150, 210, 270, 300)
-
 tempoMedio <- 0
 for(i in 1:length(tabelaTempoGasto)) {
   tempoMedio <- tempoMedio + tempos[i] * tabelaTempoGasto[i]
 }
 media <- tempoMedio / 68 / 60
-
 horas <- floor(media)
 minutos <- (media - horas) * 60
-
 segments(x0=media, x1=media, y0=0, y1= 20, col="red")
-text(paste("Tempo médio", "(", horas, "h", round(minutos), ")"), x=media, y=21, col="red")
+text(paste("Tempo mÃ©dio", "(", horas, "h", round(minutos), ")"), x=media, y=21, col="red")
 ```
-Como podemos ver, o perfil é bem variado. Isso permite que analisemos as diversas
-categorias de forma representativa, cruzando informações delas com as respostas
-relacionadas ao uso educacional das redes sociais.
-//Grafico ligando tempo e resposta
+Como podemos ver, o perfil Ã© bem variado. Isso permite que analisemos as diversas categorias de forma representativa, cruzando informaÃ§Ãµes delas com as respostas relacionadas ao uso educacional das redes sociais.
+<!--Grafico ligando tempo e resposta-->
 ```{r echo=F, fig.align="center"}
+# ../codigos/relacao-uso-midias-sociais-professores-por-tempo-diario.r
 library(readxl)
-# Carrega a planilha em um dataframe
 df <- read_excel("../dados/umses_alunos_2018.xlsx")
-#View(df)
-
-# Cria uma "dummy row"
 nrow1 <- as.table(c(0, 0, 0, 0))
 names(nrow1) <- c(1, 2, 3, 4)
-
-# Cria um dataframe com apenas os dados necessÃ¡rios
 graf4 <- rbind(nrow1, table(data.frame(df$tempogasto, df$usoacademico)))
 rownames(graf4) <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
-
-
-# Cria as labels necessÃ¡rias
 labeltempouso <- c("5-10min", "10-30min", "30min-1h", "1-2h", "2-3h", "3-4h", "4-5h", "mais de 5h")
-labelusoacademico <- c("Nãoo", "Sim", "Sim, porém\ncom\nrestriçõess", "Sem opinião")
-
-
-# Plota o grÃ¡fico
+labelusoacademico <- c("NÃ£o", "Sim", "Sim, porÃ©m\ncom\nrestriÃ§Ãµes", "Sem opiniÃ£o")
 plot <- barplot(graf4, beside = TRUE, 
                 col = rainbow(9, s=.3), 
                 xaxt = "n",
                 ylim = c(0,max(graf4) + 1),
-                main = "Relação entre respostas se mídias sociais devem ser usadas\npor professores e tempo de uso diário de mídias sociais")
-# Cria uma legenda para o grÃ¡fico
+                main = "RelaÃ§Ã£o entre respostas se mÃ­dias sociais devem ser usadas\npor professores e tempo de uso diÃ¡rio de mÃ­dias sociais")
 legend("topright", labeltempouso, fill = rainbow(8, s=.3))
-# Insere um xlab prÃ³prio
 text(plot[1,] + 3, -.3, srt = "0", labelusoacademico, pos = 1, xpd = TRUE, cex = 1)
 ```
-Neste gráfico percebemos a relação que o tempo de uso tem com a opinião delas
-Pode-se perceber que as pessoas que foram contra têm um perfil de uso mais 
-restrito, e que conforme o uso sobe mais, as pessoas tendem a ser favoráveis,
-mesmo que com restrições. Isso fica explícito ao vermos que todas as pessoas
-que utilizam mais de 4 horas são favoráveis ou favoráveis com restrições.
-Cruzando agora as informações de idade com a opinião da pessoa, vemos que isso
-influencia na sua escolha.
-//Gráfico de idadexfavorável
-```{r echo=F, fig.align="center"}
-library(readxl)
-# Carrega a planilha em um dataframe
-df <- read_excel("../dados/umses_alunos_2018.xlsx")
+Neste grÃ¡fico percebemos a relaÃ§Ã£o que o tempo de uso tem com a opiniÃ£o delas. Pode-se perceber que as pessoas que foram contra tÃªm um perfil de uso mais  restrito, e que conforme o uso sobe mais, as pessoas tendem a ser favorÃ¡veis, mesmo que com restriÃ§Ãµes. Isso fica explÃ­cito ao vermos que todas as pessoas que utilizam mais de 4 horas sÃ£o favorÃ¡veis ou favorÃ¡veis com restriÃ§Ãµes.
 
+Cruzando agora as informaÃ§Ãµes de idade com a opiniÃ£o da pessoa, vemos que isso influencia na sua escolha.
+<!--GrÃ¡fico de idadexfavorÃ¡vel-->
+```{r echo=F, fig.align="center"}
+# ../codigos/relacao-uso-midias-sociais-educacao-por-idade.r
+library(readxl)
+df <- read_excel("../dados/umses_alunos_2018.xlsx")
 nrow <- as.table(c(0, 0, 0, 0))
 names(nrow) <- c(1, 2, 3, 4)
-
 graf <- table(data.frame(df$usoacademico, df$idade))
-
 ngraf <- cbind(graf[,1:4], nrow, graf[,5])
 colnames(ngraf) <- c(1, 2, 3, 4, 5, 6)
-
 lbls = c("16-20", "21-25", "26-30", "31-35", "36-40", "40+")
-
 barplot(ngraf,
-        main="Relação entre respostas sobre uso de mídias\nsociais na educação e idade",
+        main="RelaÃ§Ã£o entre respostas sobre uso de mÃ­dias\nsociais na educaÃ§Ã£o e idade",
         beside=TRUE,
         names.arg=lbls,
         ylim=c(0, max(ngraf) + 5),
         col=rainbow(4, s=.3),
         xlab="Idade",
         ylab="Quantidade de respostas")
-
-legend("topright", c("Não", "Sim", "Sim, com restrições", "Não sei/não tenho opiniãoo"), fill=rainbow(4, s=.3))
+legend("topright", c("NÃ£o", "Sim", "Sim, com restriÃ§Ãµes", "NÃ£o sei/nÃ£o tenho opiniÃ£o"), fill=rainbow(4, s=.3))
 ```
-Enquanto no agrupamento de pessoas que têmentre 21 e 25 anos 100% das pessoas não
-possui uma opinião negativa sobre o assunto, no agrupamento de pessoas entre
-31 e 35 anos esta proporção muda drasticamente,já que o número de pessoas a
-favor, a favor com restrições e contra se igualam.
-Não fica claro que tipo de relação pode-se esperar entre as variáveis tratadas,
-já que além de faltar informações sobre uma faixa etária, as classes não mostram uma relação clara entre elas e suas vizinhas. Porém fica claro que existe diferença entre o perfil de resposta das classes.  
-Passamos agora a analisar a resposta que os participantes deram em relação à forma
-mais apropriada para a aproximação entre aluno e professor.
-//gráfico da forma de aproximar
+Enquanto no agrupamento de pessoas que tÃªm entre 21 e 25 anos 100% das pessoas nÃ£o possui uma opiniÃ£o negativa sobre o assunto, no agrupamento de pessoas entre 31 e 35 anos esta proporÃ§Ã£o muda drasticamente,jÃ¡ que o nÃºmero de pessoas a favor, a favor com restriÃ§Ãµes e contra se igualam.
+
+NÃ£o fica claro que tipo de relaÃ§Ã£o pode-se esperar entre as variÃ¡veis tratadas, jÃ¡ que alÃ©m de faltar informaÃ§Ãµes sobre uma faixa etÃ¡ria, as classes nÃ£o mostram uma relaÃ§Ã£o clara entre elas e suas vizinhas. PorÃ©m fica claro que existe diferenÃ§a entre o perfil de resposta das classes.
+
+Passamos agora a analisar a resposta que os participantes deram em relaÃ§Ã£o Ã  forma mais apropriada para a aproximaÃ§Ã£o entre aluno e professor.
+<!--grÃ¡fico da forma de aproximar-->
 ```{r echo=F, fig.align="center"}
+# ../codigos/midia-social-aproxima-prof-aluno.r
 library(readxl)
-# Carrega os dados da planilha em um dataframe
 df <- read_excel("../dados/umses_alunos_2018.xlsx")
-
-# LÃª apenas os dados pertinentes Ã  questÃ£o "A mÃ?dia social Ã© a melhor 
-# forma dos professores se aproximarem de seus alunos"
 profchegaal <- table(df$profchegaal)
-
-
-# Plota o grÃ¡fico
 ylab = barplot(profchegaal, 
-               names.arg = c('Não', 'Sim', 'Sem opinião'),
+               names.arg = c('NÃ£o', 'Sim', 'Sem opiniÃ£o'),
                col = rainbow(3, s=.3),
                ylab = "Quantidade de escolhas", 
                ylim = c(0, max(profchegaal) + 3), 
-               main = "A mídia social é a melhor\nforma dos professores se\naproximarem de seus alunos")
-
-# Escreve os valores acima de suas respectivas barras
+               main = "A mÃ­dia social Ã© a melhor\nforma dos professores se\naproximarem de seus alunos")
 text(ylab, profchegaal+1.5, profchegaal)
-
 ```
-Apesar de uma grande parte das pessoas serem a favor do uso das mídias sociais,
-existe uma divisão entre os participantes na questão da aproximação professor-aluno
-através delas. Muitos acreditam que esta não é a melhor forma, o que pode levar 
-a algumas interpretações.
-Pode-se ter entendido que não existem formas melhores que essa, o que seria um problema
-de formulação de pergunta (já que grande parte responderia que existe sim alguma forma, mesmo
-que eles ainda não saibam).
-Também pode-se interpretar que os participantes que responderam "não" realmente acham que 
-existe forma melhor, e que acham que atualmente não é o que tem de melhor para se aplicar.
-Considerando que os participantes levaram todos em consideração a interpretação de que a 
-pergunta se referia ao contexto atual, do que é possível aplicar na sala, ainda 
-assim temos um resultado meio-a-meio. Buscamos então analisar a relação entre 
-essa questão e algumas variáveis relacionadas ao perfil do participante:
-// Gráfico Pergunta aproximação alunoprof x idade
+Apesar de uma grande parte das pessoas serem a favor do uso das mÃ­dias sociais, existe uma divisÃ£o entre os participantes na questÃ£o da aproximaÃ§Ã£o professor-aluno atravÃ©s delas. Muitos acreditam que esta nÃ£o Ã© a melhor forma, o que pode levar a algumas interpretaÃ§Ãµes.
+
+Pode-se ter entendido que nÃ£o existem formas melhores que essa, o que seria um problema de formulaÃ§Ã£o de pergunta (jÃ¡ que grande parte responderia que existe sim alguma forma, mesmo que eles ainda nÃ£o saibam).
+
+TambÃ©m pode-se interpretar que os participantes que responderam "nÃ£o" realmente acham que existe forma melhor, e que acham que atualmente nÃ£o Ã© o que tem de melhor para se aplicar.
+
+Considerando que os participantes levaram todos em consideraÃ§Ã£o a interpretaÃ§Ã£o de que a pergunta se referia ao contexto atual, do que Ã© possÃ­vel aplicar na sala, ainda assim temos um resultado meio-a-meio. Buscamos entÃ£o analisar a relaÃ§Ã£o entre essa questÃ£o e algumas variÃ¡veis relacionadas ao perfil do participante:
+<!-- GrÃ¡fico Pergunta aproximaÃ§Ã£o alunoprof x idade-->
 ```{r echo=F, fig.align="center"}
+# ../codigos/relacao-midia-social-aproxima-prof-aluno-por-idade.r
 library(readxl)
-
 df <- read_excel("../dados/umses_alunos_2018.xlsx")
-#View(df)
-
 ncol <- as.table(c(0, 0, 0))
-
 rownames(ncol) <- c(1, 2, 3)
-
 tabela <- table(df$idade, df$profchegaal)
-
 graf <- rbind(tabela[1:4,], ncol, tabela[5,])
-
 rownames(graf) <- c(1, 2, 3, 4, 5, 6)
-
 barplot(graf,
         beside=TRUE,
         ylab="Quantidade de respostas",
-        main="Idades dos entrevistados por opinião sobre o uso das mídias\nsociais ser o melhor jeito de aproximar professores de alunos",
+        main="Idades dos entrevistados por opiniÃ£o sobre o uso das mÃ­dias\nsociais ser o melhor jeito de aproximar professores de alunos",
         col=rainbow(6, s=.3),
         ylim=c(0, 18),
-        names.arg=c("Não", "Sim", "Não sei/não tenho opinião"))
-
+        names.arg=c("NÃ£o", "Sim", "NÃ£o sei/nÃ£o tenho opiniÃ£o"))
 legend("topright", legend=c("16-20", "21-25", "26-30", "31-35", "36-40", "40+"), fill=rainbow(6, s=.3), title="Idade")
 ```
-//Gráfico pergunta aproximação x a-favor-ou-não
+<!--GrÃ¡fico pergunta aproximaÃ§Ã£o x a-favor-ou-nÃ£o-->
 ```{r echo=F, fig.align="center"}
-```
-Percebemos então que 
-
-Analisando agora as razões pelas quais as pessoas seriam contra o uso das mídias sociais de forma educativa, percebemos uma grande preocupação dos participantes.  
-//Gráfico dificuldades
-```{r echo=F, fig.align="center"}
+# ../codigos/relacao-uso-midias-sociais-educacao-por-aproximacao-aluno-prof.r
 library(readxl)
-
+# Carrega a planilha em um dataframe
 df <- read_excel("../dados/umses_alunos_2018.xlsx")
-#View(df)
+graf <- table(data.frame(df$usoacademico, df$profchegaal))
+lbls = c("Sim", "NÃ£o", "Sem opiniÃ£o/\nNÃ£o sei")
+barplot(graf,
+        main="RelaÃ§Ã£o entre respostas sobre uso de mÃ­dias\nsociais na educaÃ§Ã£o e se elas sÃ£o a melhor\nforma de aproximaÃ§Ã£o entre alunos e professor",
+        beside=TRUE,
+        names.arg=lbls,
+        ylim=c(0, max(graf) + 2),
+        col=rainbow(4, s=.3),
+        xlab="Ã‰ a melhor forma de aproximaÃ§Ã£o entre alunos e professores?",
+        ylab="Quantidade de respostas")
+legend("topright", c("NÃ£o", "Sim", "Sim, com restriÃ§Ãµes", "NÃ£o sei/nÃ£o tenho opiniÃ£o"), fill=rainbow(4, s=.3))
+```
+Percebemos entÃ£o que 
 
+FALTA AQUI TAMBÃ‰M
+
+Analisando agora as razÃµes pelas quais as pessoas seriam contra o uso das mÃ­dias sociais de forma educativa, percebemos uma grande preocupaÃ§Ã£o dos participantes.  
+<!--GrÃ¡fico dificuldades-->
+```{r echo=F, fig.align="center"}
+# ../codigos/dificuldades-uso-educacao.r
+library(readxl)
+df <- read_excel("../dados/umses_alunos_2018.xlsx")
 total <- length(df$distracao)
-
 outros <- sum(table(df$outras_dificuldades))
-
 distracao <- table(df$distracao)[names(table(df$distracao)) == "1"]
-
 usoindev <- table(df$usoindev)[names(table(df$usoindev)) == "1"]
-
 prejintera <- table(df$prejintera)[names(table(df$prejintera)) == "1"]
-
 bulling <- table(df$bulling)[names(table(df$bulling)) == "1"]
-
 continadeq <- table(df$continadeq)[names(table(df$continadeq)) == "1"]
-
-
-labels <- c("Distração", "Uso indevido", "Prejudica a interação aluno-professor", "Cyber-bullying", "Publicação de conteúdo inadequado")
+labels <- c("DistraÃ§Ã£o", "Uso indevido", "Prejudica a interaÃ§Ã£o aluno-professor", "Cyber-bullying", "PublicaÃ§Ã£o de conteÃºdo inadequado")
 values <- c(distracao, usoindev, prejintera, bulling, continadeq)
-
 dados <- data.frame(labels, values)
 nl <- data.frame("Outros", outros)
 names(nl) <- c("labels", "values")
-
 dadosOrdenados <- rbind(dados[with(dados, order(dados$values)),], nl)
-
-
 xval <- barplot(dadosOrdenados$values,
-        main="Dificuldades no uso de mídias sociais\nnum ambiente educacional",
+        main="Dificuldades no uso de mÃ­dias sociais\nnum ambiente educacional",
         col=rainbow(6, s=.3),
         ylim=c(0, ceiling(total / 10) * 10),
         ylab="Quantidade de pessoas")
-
 text(x=xval, y=dadosOrdenados$values + 0.05 * max(dadosOrdenados$values), dadosOrdenados$values, xpd=TRUE)
-
 legend("topleft", legend=dadosOrdenados$labels, fill=rainbow(6, s=.3))
 ```
-De forma geral, os participantes acham que as mídias sociais geram distração, o que é um fator determinante no desempenho escolar de forma geral. Além disso grande parte dos participantes também acham que haveria uso indevido, o que corrobora a questão da distração, sendo este o fator mais negativo relacionado ao assunto. Analisando os dados vemos que essas foram também as duas respostas dadas pelas pessoas que foram contra o uso das mídias 
-sociais no ambiente educativo.
+De forma geral, os participantes acham que as mÃ­dias sociais geram distraÃ§Ã£o, o que Ã© um fator determinante no desempenho escolar de forma geral. AlÃ©m disso grande parte dos participantes tambÃ©m acham que haveria uso indevido, o que corrobora a questÃ£o da distraÃ§Ã£o, sendo este o fator mais negativo relacionado ao assunto. Analisando os dados vemos que essas foram tambÃ©m as duas respostas dadas pelas pessoas que foram contra o uso das mÃ­dias sociais no ambiente educativo.
 ```{r echo=F, fig.align="center"}
 ```
