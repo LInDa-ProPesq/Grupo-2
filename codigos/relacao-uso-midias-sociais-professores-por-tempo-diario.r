@@ -17,7 +17,7 @@ rownames(graf4) <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
 labeltempouso <- c("5-10min", "10-30min", "30min-1h", "1-2h", "2-3h", "3-4h", "4-5h", "mais de 5h")
 labelusoacademico <- c("Não", "Sim", "Sim, porém\ncom\nrestrições", "Sem opinião")
 
-# Abre um arquivo .jpeg para a escrita do gráfico
+# Abre um arquivo .png para a escrita do gráfico
 png('graficos/relacao-uso-midias-sociais-professores-por-tempo-diario.png', width=600, height=600)
 
 # Plota o gráfico
