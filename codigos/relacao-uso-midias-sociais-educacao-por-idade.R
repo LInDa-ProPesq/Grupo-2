@@ -2,11 +2,15 @@ library(readxl)
 # Carrega a planilha em um dataframe
 df <- read_excel("dados/umses_alunos_2018.xlsx")
 
+# Os dados que serão utilizados têm linhas/colunas com nenhum valor, isso faz com que ao 
+# lê-los ele tenha linhas a menos
 nrow <- as.table(c(0, 0, 0, 0))
 names(nrow) <- c(1, 2, 3, 4)
 
 graf <- table(data.frame(df$usoacademico, df$idade))
 
+# Concatenação entre os dados recebidos e uma linha em branco, para dar uma 
+# completude maior aos dados
 ngraf <- cbind(graf[,1:4], nrow, graf[,5])
 colnames(ngraf) <- c(1, 2, 3, 4, 5, 6)
 
