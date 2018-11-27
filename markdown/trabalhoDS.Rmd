@@ -5,8 +5,8 @@ fontsize: 12pt
 \newpage
 \pagestyle{empty}
 \begin{center}
-{\large Universidade Paulista 'Júlio de Mesquita Filho'}\\[8cm]
-{\large Análise Exploratória de Dados: "O Uso da Mídia Social no Ensino Superior"'}\\[5cm]
+{\large Universidade Estadual Paulista "Júlio de Mesquita Filho"}\\[8cm]
+{\large Análise Exploratória de Dados: "O Uso da Mídia Social no Ensino Superior"}\\[5cm]
 \end{center}
 
 \begin{center}
