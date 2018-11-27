@@ -216,7 +216,7 @@ legend("topright", c("Não", "Sim", "Sim, com restrições", "Não sei/não tenh
 ```
 Enquanto no agrupamento de pessoas que têm entre 21 e 25 anos 100% das pessoas não possui uma opinião negativa sobre o assunto, no agrupamento de pessoas entre 31 e 35 anos esta proporção muda drasticamente,já que o número de pessoas a favor, a favor com restrições e contra se igualam.
 
-Não fica claro que tipo de relação pode-se esperar entre as variáveis tratadas, já que além de faltar informações sobre uma faixa etária, as classes não mostram uma relação clara entre elas e suas vizinhas. Porém fica claro que existe diferença entre o perfil de resposta das classes.
+Não fica claro que tipo de relação pode-se esperar entre as variáveis tratadas, já que além de faltar informações sobre uma faixa etária, as classes não mostram uma relação explícita entre elas e suas vizinhas. Porém é perceptível que existe diferença entre o perfil de resposta das classes.
 
 Passamos agora a analisar a resposta que os participantes deram em relação à forma mais apropriada para a aproximação entre aluno e professor.
 <!--gráfico da forma de aproximar-->
@@ -235,13 +235,13 @@ text(ylab, profchegaal+1.5, profchegaal)
 ```
 Apesar de uma grande parte das pessoas serem a favor do uso das mídias sociais, existe uma divisão entre os participantes na questão da aproximação professor-aluno através delas. Muitos acreditam que esta não é a melhor forma, o que pode levar a algumas interpretações.
 
-Pode-se ter entendido que não existem formas melhores que essa, o que seria um problema de formulação de pergunta (já que grande parte responderia que existe sim alguma forma, mesmo que eles ainda não saibam).
+Pode-se ter entendido que não existem formas melhores que essa, o que seria um problema de formulação de pergunta, de modo que pessoas que acreditam que a aproximação dos professores com os alunos seja válida, estes podem não concoradar que é o melhor meio que existe para efetuar esta aproximação.
 
-Também pode-se interpretar que os participantes que responderam "não" realmente acham que existe forma melhor, e que acham que atualmente não é o que tem de melhor para se aplicar.
+Também pode-se interpretar que os participantes que responderam "não" realmente acham que existe forma melhor, e que acham que atualmente não é a melhor abordagem para se resolver esta questão.
 
-Considerando que os participantes levaram todos em consideração a interpretação de que a pergunta se referia ao contexto atual, do que é possível aplicar na sala, ainda assim temos um resultado meio-a-meio. Buscamos então analisar a relação entre essa questão e algumas variáveis relacionadas ao perfil do participante:
+Considerando que os todos participantes interpretaram a pergunta de modo que esta se referia ao contexto atual, do que é possível aplicar na sala, ainda se obtém um resultado meio-a-meio. Buscamos então analisar a relação entre essa questão e algumas variáveis relacionadas ao perfil do participante:
 <!-- Gráfico Pergunta aproximação alunoprof x idade-->
-```{r echo=F, fig.align="center"}
+```{r echo=F, fig.align="center", out.width="400px"}
 # ../codigos/relacao-midia-social-aproxima-prof-aluno-por-idade.r
 library(readxl)
 df <- read_excel("../dados/umses_alunos_2018.xlsx")
@@ -260,7 +260,7 @@ barplot(graf,
 legend("topright", legend=c("16-20", "21-25", "26-30", "31-35", "36-40", "40+"), fill=rainbow(6, s=.3), title="Idade")
 ```
 <!--Gráfico pergunta aproximação x a-favor-ou-não-->
-```{r echo=F, fig.align="center"}
+```{r echo=F, fig.align="center", out.width="400px"}
 # ../codigos/relacao-uso-midias-sociais-educacao-por-aproximacao-aluno-prof.r
 library(readxl)
 # Carrega a planilha em um dataframe
@@ -279,7 +279,7 @@ legend("topright", c("Não", "Sim", "Sim, com restrições", "Não sei/não tenh
 ```
 Percebemos então que, apesar de não termos um conjunto de dados representativo dessa faixa etária, a opinião das pessoas com mais de 40 anos são ou contra ou indecisa, o que mostra uma relação entre sua idade e sua opinião sobre o assunto. Nas demais faixas etárias a distribuição ocorreu de forma mais bem distribuída entre a favor e contra.  
 Analisando a relação entre as respostas sobre ser a favor do uso de mídias sociais pelos professores e as respostas sobre a melhor forma de aproximação, vemos que de forma geral, as pessoas se dividiram de forma uniforme. Um ponto que mais apresenta um padrão é os sem opinião.  
-Os que optaram por não opinar na questão do uso das mídias por professores ou não opinaram sobre ser a melhor forma também, ou votama por sim, o que quebra com o padrão "conservador" apresentado ao se evadir da primeira pergunta.
+Os que escolheram por não opinar na questão do uso das mídias por professores ou não opinaram sobre ser a melhor forma também, ou votaram por sim, o que quebra com o padrão "conservador" apresentado ao se evadir da primeira pergunta.
 Outro ponto é o fato de que todos que votaram "não" na pergunta sobre o uso das mídias se posicionou de forma clara na pergunta sobre a forma de aproximação, enquanto muitos dos que foram a favor acabaram se abstendo desta pergunta.
 
 Analisando agora as razões pelas quais as pessoas seriam contra o uso das mídias sociais de forma educativa, percebemos uma grande preocupação dos participantes.  
@@ -313,5 +313,5 @@ De forma geral, os participantes acham que as mídias sociais geram distração,
 
 #Conclusão
 
-Apesar do número limitado de dados devido ao pequeno número de estudantes na sala, podemos retirar algumas relações entre as variáveis e perceber alguns comportamentos dos participantes ao responderem o questionário. Mesmo que esses comporamentos percebidos nos dados possam não ser tão representativos de um padrão de comportamento geral, foi possível entender de forma mais clara a opinião das pessoas que como as variáveis podem possivelmente  ter relações entre si.  
+Apesar do número limitado de dados devido ao pequeno número de estudantes na sala, podemos retirar algumas relações entre as variáveis e perceber alguns comportamentos dos participantes ao responderem o questionário. Mesmo que esses comportamentos percebidos nos dados possam não ser tão representativos de um padrão de comportamento geral, foi possível entender de forma mais clara a opinião das pessoas de como que as variáveis, sendo elas idade, número de horas de uso, ou ainda redes sociais mais utilizadas, podem possivelmente ter relações entre si e com as opiniões fornecidas nos questionários.  
 De forma geral, os participantes são a favor do uso das mídias sociais, mas têm receio quanto à forma de utilização e aos problemas relacionados a isso. 
