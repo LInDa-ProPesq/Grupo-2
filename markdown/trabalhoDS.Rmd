@@ -190,7 +190,7 @@ plot <- barplot(graf4, beside = TRUE,
 legend("topright", labeltempouso, fill = rainbow(8, s=.3))
 text(plot[1,] + 3, -.3, srt = "0", labelusoacademico, pos = 1, xpd = TRUE, cex = 1)
 ```
-Neste gráfico percebemos a relação que o tempo de uso tem com a opinião delas. Pode-se perceber que as pessoas que foram contra têm um perfil de uso mais  restrito, e que conforme o uso sobe mais, as pessoas tendem a ser favoráveis, mesmo que com restrições. Isso fica explícito ao vermos que todas as pessoas que utilizam mais de 4 horas são favoráveis ou favoráveis com restrições.
+Neste gráfico percebemos a relação que o tempo de uso tem com a opinião delas. Pode-se perceber que as pessoas que foram contra têm um perfil de uso mais restrito, e que conforme o uso sobe mais, as pessoas tendem a ser favoráveis, mesmo que com restrições. Isso fica explícito ao vermos que todas as pessoas que utilizam mais de 4 horas são favoráveis ou favoráveis com restrições.
 
 Cruzando agora as informações de idade com a opinião da pessoa, vemos que isso influencia na sua escolha.
 <!--Gráfico de idadexfavorável-->
@@ -214,7 +214,7 @@ barplot(ngraf,
         ylab="Quantidade de respostas")
 legend("topright", c("Não", "Sim", "Sim, com restrições", "Não sei/não tenho opinião"), fill=rainbow(4, s=.3))
 ```
-Enquanto no agrupamento de pessoas que têm entre 21 e 25 anos 100% das pessoas não possui uma opinião negativa sobre o assunto, no agrupamento de pessoas entre 31 e 35 anos esta proporção muda drasticamente,já que o número de pessoas a favor, a favor com restrições e contra se igualam.
+Enquanto no agrupamento de pessoas que têm entre 21 e 25 anos 100% das pessoas não há uma opinião negativa sobre o assunto, no agrupamento de pessoas entre 31 e 35 anos esta proporção muda drasticamente, já que o número de pessoas a favor, com restrições, e contra se igualam.
 
 Não fica claro que tipo de relação pode-se esperar entre as variáveis tratadas, já que além de faltar informações sobre uma faixa etária, as classes não mostram uma relação explícita entre elas e suas vizinhas. Porém é perceptível que existe diferença entre o perfil de resposta das classes.
 
@@ -279,7 +279,9 @@ legend("topright", c("Não", "Sim", "Sim, com restrições", "Não sei/não tenh
 ```
 Percebemos então que, apesar de não termos um conjunto de dados representativo dessa faixa etária, a opinião das pessoas com mais de 40 anos são ou contra ou indecisa, o que mostra uma relação entre sua idade e sua opinião sobre o assunto. Nas demais faixas etárias a distribuição ocorreu de forma mais bem distribuída entre a favor e contra.  
 Analisando a relação entre as respostas sobre ser a favor do uso de mídias sociais pelos professores e as respostas sobre a melhor forma de aproximação, vemos que de forma geral, as pessoas se dividiram de forma uniforme. Um ponto que mais apresenta um padrão é os sem opinião.  
-Os que escolheram por não opinar na questão do uso das mídias por professores ou não opinaram sobre ser a melhor forma também, ou votaram por sim, o que quebra com o padrão "conservador" apresentado ao se evadir da primeira pergunta.
+
+Os que escolheram por não opinar na questão do uso das mídias por professores opinaram de duas formas sobre as redes sociais serem a melhor maneira de aproximar o professor do aluno, sendo estas opinões a abstenção, ou o "sim". O que quebra com o padrão apresentado por este grupo que evadiram da primeira pergunta.
+
 Outro ponto é o fato de que todos que votaram "não" na pergunta sobre o uso das mídias se posicionou de forma clara na pergunta sobre a forma de aproximação, enquanto muitos dos que foram a favor acabaram se abstendo desta pergunta.
 
 Analisando agora as razões pelas quais as pessoas seriam contra o uso das mídias sociais de forma educativa, percebemos uma grande preocupação dos participantes.  
