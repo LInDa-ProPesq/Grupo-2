@@ -11,7 +11,7 @@ fontsize: 12pt
 
 \begin{center}
 {\large Bruno Belluzzo}\\
-{\large Marcelo Garcia Nunes}\\
+{\large Marcelo Garcia Nuñez}\\
 {\large Marcelo Hideaki Iwata Kito}\\
 {\large Paulo Eduardo Manzone Maia}\\
 {\large Rafael Tatsuki Takagi}\\[5cm]
