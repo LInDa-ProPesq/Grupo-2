@@ -6,7 +6,7 @@ fontsize: 12pt
 \pagestyle{empty}
 \begin{center}
 {\large Universidade Paulista 'Júlio de Mesquita Filho'}\\[8cm]
-{\large Analise Exploratória de Dados: "O Uso da Mídia Social no Ensino Superior"'}\\[5cm]
+{\large Análise Exploratória de Dados: "O Uso da Mídia Social no Ensino Superior"'}\\[5cm]
 \end{center}
 
 \begin{center}
@@ -130,11 +130,11 @@ Analisando o perfil daqueles que responderam "não", vemos que eles se mostram u
 
 Assim como considerando que a quantidade de individuos que responderam "não" é de 2, temos que ambos os participantes fazem uso de um conjunto muito similar de redes sociais. Desta forma eles aparentam ter uma mínima familiaridade com o conceito e uso de redes sociais para fornecer a resposta de professores não deveriam fazer uso destas.
 
-Os participantes que responderam com "sim" e aqueles que "sim, porém com restrições" mostararam um perfil muito similar. A proporção que cada rede social teve de usuários se manteve proporcional entre os dois dois grupos de participantes.
+Os participantes que responderam com "sim" e aqueles que "sim, porém com restrições" mostraram um perfil muito similar. A proporção que cada rede social teve de usuários se manteve proporcional entre os dois grupos de participantes.
 
-Em comparação do uso de redes sociais por estes dois grupos de participantes e com aquele que respondeu "não" é de que enquanto o último se mostrou uniforme, os dois primeiros apresentam maior diferença de uso entre o as redes sociais.
+Em comparação do uso de redes sociais por estes dois grupos de participantes com o grupo dos que responderam "não" é de que enquanto o último se mostrou uniforme, os dois primeiros apresentam maior diferença de uso entre o as redes sociais.
 
-Para aqueles que responderam "sim", e "sim, porém com restrições" se pode concluir também que estes participantes demonstram uma mínima familiaridade com o conceito e uso de redes sociais, e pelo gráfico se concluí que todos são usuários de no mínimo uma rede social, o Whatsapp, porém existem outras redes sociais muito utilizadas logo em seguida, como o Facebook, Youtube e Instagram.
+Para aqueles que responderam "sim" e "sim, porém com restrições" se pode concluir também que estes participantes demonstram uma mínima familiaridade com o conceito e uso de redes sociais. Pelo gráfico se concluí que todos são usuários de no mínimo uma rede social, o Whatsapp, porém existem outras redes sociais muito utilizadas logo em seguida, como o Facebook, Youtube e Instagram.
 
 O resultado obtido por aqueles que responderam "não sei/não tenho opinião sobre isso" fica em um meio termo entre aqueles que responderam "sim" e aqueles que responderam "não". Isto pois apesar de serem poucos os que responderam "não sei/não tenho opinião sobre isso", as redes sociais utilizadas por estes participantes não se mostrou tão uniforme quanto as daqueles que responderam "não", porém também não tão diversificado quanto as daqueles que responderam "sim".
 
