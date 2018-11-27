@@ -1,6 +1,5 @@
-
 ---
-title: "Analise exploratÛria de dados"
+title: "Analise explorat√≥ria de dados"
 output:
   slidy_presentation: default
   ioslides_presentation: default
@@ -17,18 +16,18 @@ knitr::opts_chunk$set(echo = FALSE)
 - Paulo Eduardo Manzone Maia
 - Marcelo Garcia Nunez
 - Rafael Tatsuki Takagi
-- Marcelo Hideaki Iwate Kito
+- Marcelo Hideaki Iwata Kito
 
 ## Estudando o perfil dos participantes
 
-Tentamos entender o perfil dos participantes atravÈs do gr·fico abaixo:
+Tentamos entender o perfil dos participantes atrav√©s do gr√°fico abaixo:
 
 ```{r echo=FALSE, fig.align='center'}
 library(readxl)
-df <- read_excel("umses_alunos_2018.xlsx")
-lbls <- c("N„o", "Sim", "Sim, porÈm\ncom restriÁıes", "N„o sei/n„o\ntenho opini„o")
+df <- read_excel("../dados/umses_alunos_2018.xlsx")
+lbls <- c("N√£o", "Sim", "Sim, por√©m\ncom restri√ß√µes", "N√£o sei/n√£o\ntenho opini√£o")
 xval <- barplot(table(df$usoacademico),
-        main="A mÌdia social È uma ferramenta que pode\nser usada por professores?",
+        main="A m√≠dia social √© uma ferramenta que pode\nser usada por professores?",
         ylim=c(0, 50),
         names.arg=lbls,
         col=rainbow(4, s=.3))
@@ -37,11 +36,11 @@ text(x=xval, y=table(df$usoacademico) + max(table(df$usoacademico)) * 0.05, tabl
 
 ## Estudando o perfil dos participantes
 
-Para compreender melhor as respostas, buscamos ver com qual faixa et·ria estamos trabalhando em maior quantidade e, nos prÛximos slides, apresentar gr·ficos para analisar como o contato com as redes influencia na opini„o dos entrevistados.
+Para compreender melhor as respostas, buscamos ver com qual faixa et√°ria estamos trabalhando em maior quantidade e, nos pr√≥ximos slides, apresentar gr√°ficos para analisar como o contato com as redes influencia na opini√£o dos entrevistados.
 
 ```{r echo=FALSE, fig.align='center'}
 library(readxl)
-df <- read_excel("umses_alunos_2018.xlsx")
+df <- read_excel("../dados/umses_alunos_2018.xlsx")
 idade <- table(df$idade)
 nidade <- as.table(0)
 names(nidade) <- 5
@@ -49,23 +48,21 @@ idades <- c(idade, nidade)
 idadeOrdenada <- idades[order(names(idades))]
 idadeLbl = c("16-20", "21-25", "26-30", "31-35", "36-40", "40+")
 idadePercent = sprintf("%d%%", round(100 * idadeOrdenada / sum(idadeOrdenada)))
-pie(idadeOrdenada, labels=idadePercent, col=rainbow(6, s=.3), main="Faixa et·ria dos entrevistados")
+pie(idadeOrdenada, labels=idadePercent, col=rainbow(6, s=.3), main="Faixa et√°ria dos entrevistados")
 legend("topright", idadeLbl, fill=rainbow(6, s=.3))
-
 ```
 
 
-## Gr·ficos sobre o uso das redes
+## Gr√°ficos sobre o uso das redes
 
 ```{r echo=FALSE, fig.align="center", out.width="1000px"}
 library(readxl)
-df <- read_excel("umses_alunos_2018.xlsx")
+df <- read_excel("../dados/umses_alunos_2018.xlsx")
 tabela <- cbind(df$twitter, df$facebook, df$whatsapp, df$linkedin, df$youtube, df$instagram, df$snapchat, df$tumblr, df$pinterest, df$usoacademico)
 lbls <- c("Twitter", "Facebook", "Whatsapp", "Linkedin", "Youtube", "Instagram", "Snapchat", "Tumblr", "Pinterest")
 tab1 <- tabela[tabela[, 10] == 1, 1:9]
 graf1 <- colSums(tab1[1:length(tab1[, 1]), 1:9])
-
-xval1 <- barplot(graf1, main="Uso das redes sociais entre quem respondeu \"N„o\"\npara o uso de mÌdias sociais por professores",
+xval1 <- barplot(graf1, main="Uso das redes sociais entre quem respondeu \"N√£o\"\npara o uso de m√≠dias sociais por professores",
       ylab="Quantidade de escolhas",
      beside=TRUE,
      axes=FALSE,
@@ -75,22 +72,19 @@ xval1 <- barplot(graf1, main="Uso das redes sociais entre quem respondeu \"N„o\"
 axis(0:3, side=2, pos=c(0, 0))
 text(lbls, x=xval1, y=-0.05 * max(graf1), srt="45", xpd=TRUE, adj=1)
 text(graf1, x=xval1, y=graf1 + 0.05 * max(graf1))
-
 ```
 
-## Gr·ficos sobre o uso das redes
+## Gr√°ficos sobre o uso das redes
 
 ```{r echo=FALSE, fig.align="center", out.width="1000px"}
 library(readxl)
-df <- read_excel("umses_alunos_2018.xlsx")
+df <- read_excel("../dados/umses_alunos_2018.xlsx")
 tabela <- cbind(df$twitter, df$facebook, df$whatsapp, df$linkedin, df$youtube, df$instagram, df$snapchat, df$tumblr, df$pinterest, df$usoacademico)
 lbls <- c("Twitter", "Facebook", "Whatsapp", "Linkedin", "Youtube", "Instagram", "Snapchat", "Tumblr", "Pinterest")
-
 tab2 <- tabela[tabela[, 10] == 2, 1:9]
 graf2 <- colSums(tab2[1:length(tab2[, 1]), 1:9])
-
 xval2 <- barplot(graf2,
-                 main="Uso das redes sociais entre quem respondeu \"Sim\"\npara o uso de mÌdias sociais por professores",
+                 main="Uso das redes sociais entre quem respondeu \"Sim\"\npara o uso de m√≠dias sociais por professores",
                  ylab="Quantidade de escolhas",
                  beside=TRUE,
                  axes=FALSE,
@@ -102,19 +96,17 @@ text(lbls, x=xval2, y=-0.05 * max(graf2), srt="45", xpd=TRUE, adj=1)
 text(graf2, x=xval2, y=graf2 + 0.05 * max(graf2))
 ```
 
-## Gr·ficos sobre o uso das redes
+## Gr√°ficos sobre o uso das redes
 
 ```{r echo=FALSE, fig.align="center", out.width="1000px"}
 library(readxl)
-df <- read_excel("umses_alunos_2018.xlsx")
+df <- read_excel("../dados/umses_alunos_2018.xlsx")
 tabela <- cbind(df$twitter, df$facebook, df$whatsapp, df$linkedin, df$youtube, df$instagram, df$snapchat, df$tumblr, df$pinterest, df$usoacademico)
 lbls <- c("Twitter", "Facebook", "Whatsapp", "Linkedin", "Youtube", "Instagram", "Snapchat", "Tumblr", "Pinterest")
-
 tab3 <- tabela[tabela[, 10] == 3, 1:9]
 graf3 <- colSums(tab3[1:length(tab3[, 1]), 1:9])
-
 xval3 <- barplot(graf3,
-                 main="Uso das redes sociais entre quem respondeu \"Sim, porÈm\ncom restriÁıes\" para o uso de mÌdias sociais por professores",
+                 main="Uso das redes sociais entre quem respondeu \"Sim, por√©m\ncom restri√ß√µes\" para o uso de m√≠dias sociais por professores",
                  ylab="Quantidade de escolhas",
                  beside=TRUE,
                  axes=FALSE,
@@ -126,19 +118,17 @@ text(lbls, x=xval3, y=-0.05 * max(graf3), srt="45", xpd=TRUE, adj=1)
 text(graf3, x=xval3, y=graf3 + 0.05 * max(graf3))
 ```
 
-## Gr·ficos sobre o uso das redes
+## Gr√°ficos sobre o uso das redes
 
 ```{r echo=FALSE, fig.align="center", out.width="1000px"}
 library(readxl)
-df <- read_excel("umses_alunos_2018.xlsx")
+df <- read_excel("../dados/umses_alunos_2018.xlsx")
 tabela <- cbind(df$twitter, df$facebook, df$whatsapp, df$linkedin, df$youtube, df$instagram, df$snapchat, df$tumblr, df$pinterest, df$usoacademico)
 lbls <- c("Twitter", "Facebook", "Whatsapp", "Linkedin", "Youtube", "Instagram", "Snapchat", "Tumblr", "Pinterest")
-
 tab4 <- tabela[tabela[, 10] == 4, 1:9]
 graf4 <- colSums(tab4[1:length(tab4[, 1]), 1:9])
-
 xval4 <- barplot(graf4,
-                 main="Uso das redes sociais entre quem respondeu \"N„o sei/N„o\ntenho opini„o\"\ para o uso de mÌdias sociais por professores",
+                 main="Uso das redes sociais entre quem respondeu \"N√£o sei/N√£o\ntenho opini√£o\"\ para o uso de m√≠dias sociais por professores",
                  ylab="Quantidade de escolhas",
                  beside=TRUE,
                  axes=FALSE,
